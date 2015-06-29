@@ -3,6 +3,13 @@
  */
 public class Main {
     public static void main(String[] args){
-        System.out.println("Hello World!");
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
+        try {
+            Thread.currentThread().sleep(1500);
+        }catch (InterruptedException e){
+
+        }
+        System.out.println(stopWatch.getTimeString());
     }
 }

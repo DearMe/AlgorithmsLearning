@@ -1,9 +1,11 @@
+package myuitl;
+
 import java.util.List;
 
 /**
  * Created by ruanqx on 2015/6/29.
  */
-public class StopWatch {
+public class Stopwatch {
     static public int AN_HOUR = 60 * 60 * 1000;
     static public int A_MINUTE = 60 * 1000;
     private long startTime = -1;

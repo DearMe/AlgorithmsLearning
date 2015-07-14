@@ -1,19 +1,23 @@
 package test;
 
 import myuitl.Stopwatch;
+import sort.Merge;
+import sort.MergeBU;
+
+import java.util.Random;
 
 /**
  * Created by ruanqx on 2015/6/29.
  */
 public class Main {
     public static void main(String[] args){
-        Stopwatch stopWatch = new Stopwatch();
-        stopWatch.start();
-        try {
-            Thread.currentThread().sleep(1500);
-        }catch (InterruptedException e){
-
+        Random rand = new Random();
+        Integer[] Ints = new Integer[15];
+        for(int i = 0; i < 15; i++){
+            Ints[i] = (Integer)(rand.nextInt(100));
         }
-        System.out.println(stopWatch.getTimeString());
+        MergeBU.show(Ints);
+        MergeBU.sort(Ints);
+        MergeBU.show(Ints);
     }
 }

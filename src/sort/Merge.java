@@ -33,7 +33,7 @@ public class Merge extends SortBase{
             return;
         int mid = lo + (hi - lo)/2;
         sort(a, lo, mid);
-        sort(a, mid+1, hi);
+        sort(a, mid + 1, hi);
         merge(a, lo, mid, hi);
     }
 }

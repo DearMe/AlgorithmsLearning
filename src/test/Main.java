@@ -12,12 +12,11 @@ import java.util.Random;
 public class Main {
     public static void main(String[] args){
         Random rand = new Random();
-        Integer[] Ints = new Integer[15];
-        for(int i = 0; i < 15; i++){
+        Integer[] Ints = {54, 29, 89, 33, 18, 70, 42, 3, 46, 1, 90, 7, 86, 56, 94,};
+        /*for(int i = 0; i < 15; i++){
             Ints[i] = (Integer)(rand.nextInt(100));
-        }
+        }*/
         MergeBU.show(Ints);
         MergeBU.sort(Ints);
-        MergeBU.show(Ints);
     }
 }

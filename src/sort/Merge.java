@@ -34,6 +34,9 @@ public class Merge extends SortBase{
         int mid = lo + (hi - lo)/2;
         sort(a, lo, mid);
         sort(a, mid + 1, hi);
+        //数组以mid下标为界，如果左边的最后一个比右边的第一个小，则不需归并。如是，任意有序的字数组算法的运行时间变为线性
+        if(less(a[mid], a[mid+1]))
+            return;
         merge(a, lo, mid, hi);
     }
 }

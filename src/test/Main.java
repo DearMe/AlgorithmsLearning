@@ -2,6 +2,7 @@ package test;
 
 import myuitl.Stopwatch;
 import sort.Merge;
+import sort.MergeAdvance;
 import sort.MergeBU;
 
 import java.util.Random;
@@ -16,7 +17,7 @@ public class Main {
         /*for(int i = 0; i < 15; i++){
             Ints[i] = (Integer)(rand.nextInt(100));
         }*/
-        MergeBU.show(Ints);
-        MergeBU.sort(Ints);
+        MergeAdvance.sort(Ints);
+        MergeAdvance.show(Ints);
     }
 }

@@ -28,6 +28,14 @@ public class Merge extends SortBase{
         sort(a, 0, a.length-1);
     }
 
+    public static void sortByLoop(Comparable[] a){
+        int N = a.length;
+        int[] stake = new int[100];
+        int top = 0;
+        for(int i = 0; i < N; i += 2){
+        }
+    }
+
     private static void sort(Comparable[] a, int lo, int hi){
         if(hi <= lo)
             return;

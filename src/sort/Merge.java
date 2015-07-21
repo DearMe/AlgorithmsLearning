@@ -29,11 +29,51 @@ public class Merge extends SortBase{
     }
 
     public static void sortByLoop(Comparable[] a){
+        aux = new Comparable[a.length];
         int N = a.length;
-        int[] stake = new int[100];
-        int top = 0;
-        for(int i = 0; i < N; i += 2){
+        int n = 1;
+        int count = 0;
+        while(N > n - 1){
+            n *= 2;
+            count++;
         }
+        int[] stack = new int[2*count];
+        int top = -1;
+        int max = top;
+        for(int i = 0; i < N; i += 2){
+            if(i == N-1 && N%2 != 0){
+                stack[++top] = i;
+                stack[++top] = i;
+                if(top > max)
+                    max = top;
+            }else{
+                merge(a, i, i, i+1);
+                stack[++top] = i;
+                stack[++top] = i+1;
+                if(top > max)
+                    max = top;
+            }
+            while(top > 1){
+                if(stack[top] == stack[top-1]){
+                    merge(a, stack[top-3], stack[top-2], stack[top]);
+                    stack[top-2] = stack[top];
+                    top = top - 2;
+                }else{
+                    int different = stack[top] - stack[top-1] - stack[top-2] + stack[top-3];
+                    if(stack[top-1] -1 == stack[top-2] && different == 0){
+                        merge(a, stack[top-3], stack[top-2],stack[top]);
+                        stack[top-2] = stack[top];
+                        top = top-2;
+                    }else if(i+2 >= N){
+                        merge(a, stack[top-3], stack[top-2],stack[top]);
+                        stack[top-2] = stack[top];
+                        top = top-2;
+                    }else
+                        break;
+                }
+            }
+        }
+        System.out.println(max+1);
     }
 
     private static void sort(Comparable[] a, int lo, int hi){

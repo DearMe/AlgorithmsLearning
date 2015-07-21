@@ -32,8 +32,8 @@ public class Merge extends SortBase{
         aux = new Comparable[a.length];
         int N = a.length;
         int n = 1;
-        int count = 0;
-        while(N > n - 1){
+        int count = -1;
+        while(N > n - 2){
             n *= 2;
             count++;
         }
@@ -73,7 +73,6 @@ public class Merge extends SortBase{
                 }
             }
         }
-        System.out.println(max+1);
     }
 
     private static void sort(Comparable[] a, int lo, int hi){
@@ -82,7 +81,7 @@ public class Merge extends SortBase{
         int mid = lo + (hi - lo)/2;
         sort(a, lo, mid);
         sort(a, mid + 1, hi);
-        //数组以mid下标为界，如果左边的最后一个比右边的第一个小，则不需归并。如是，任意有序的字数组算法的运行时间变为线性
+        //锟斤拷锟斤拷锟斤拷mid锟铰憋拷为锟界，锟斤拷锟斤拷锟竭碉拷锟斤拷锟揭伙拷锟斤拷锟斤拷冶叩牡锟揭伙拷锟叫★拷锟斤拷锟斤拷锟介并锟斤拷锟斤拷锟角ｏ拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷惴拷锟斤拷锟斤拷锟绞憋拷锟斤拷为锟斤拷锟斤拷
         if(less(a[mid], a[mid+1]))
             return;
         merge(a, lo, mid, hi);

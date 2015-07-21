@@ -1,9 +1,6 @@
 package test;
 
-import myuitl.Stopwatch;
 import sort.Merge;
-import sort.MergeAdvance;
-import sort.MergeBU;
 
 import java.util.Random;
 
@@ -14,7 +11,7 @@ public class Main {
     public static void main(String[] args){
         Random rand = new Random();
 //        Integer[] Ints = {54, 29, 89, 33, 18, 70, 42, 3, 46, 1, 90, 7, 86, 56, 94,};
-        int count = 63;
+        int count = 55;
         Integer[] Ints = new Integer[count];
         for(int i = 0; i < count; i++){
             Ints[i] = (Integer)(rand.nextInt(5000));

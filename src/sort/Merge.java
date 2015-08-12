@@ -33,6 +33,7 @@ public class Merge extends SortBase{
         int N = a.length;
         int n = 1;
         int count = -1;
+        //2^n - 1 <= N < 2^(n+1) - 1
         while(N > n - 2){
             n *= 2;
             count++;

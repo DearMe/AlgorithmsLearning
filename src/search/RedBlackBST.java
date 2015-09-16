@@ -2,6 +2,8 @@ package search;
 
 import javafx.scene.shape.VLineTo;
 
+import java.util.NoSuchElementException;
+
 /**
  * Created by ruanqx on 2015/9/1.
  */
@@ -110,5 +112,83 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> extends ST{
             }
             return h;
         }
+
+        public void deleteMax(){
+            if(!isRed(root.left) && !isRed(root.right))
+                root.color = RED;
+            root = deleteMax(root);
+            if(!isEmpty()) root.color = BLACK;
+        }
+
+        private Node deleteMax(Node h) {
+            if(isRed(h.left))
+                h = rotateRight(h);
+            if(h.right == null)
+                return null;
+            if(!isRed(h.right) && !isRed(h.right.left))
+                h = moveRedRight(h.right);
+            return balance(h);
+        }
+
+        private Node moveRedRight(Node h) {
+            flipColors(h);
+            if(!isRed(h.left.left))
+                h = rotateRight(h);
+            return h;
+        }
+
+        public void delete(Key key){
+            if(!isRed(root.left) && !isRed(root.right)){
+                root.color = RED;
+            }
+            root = delete(root, key);
+            if(!isEmpty()) root.color = BLACK;
+        }
+
+        private Node delete(Node h, Key key) {
+            if(key.compareTo(h.key) < 0){
+                if(!isRed(h.left) && !isRed(h.left.left)){
+                    h = rotateRight(h);
+                    h.left = delete(h.left, key);
+                }
+            }
+            else{
+                if(isRed(h.left))
+                    h = rotateRight(h);
+                if(key.compareTo(h.key) == 0 && h.right == null)
+                    return null;
+                if(!isRed(h.right) && !isRed(h.right.left))
+                    h = moveRedRight(h);
+                if(key.compareTo(h.key) == 0){
+                    h.value = get(h.right, min(h.right).key);
+                    h.key = min(h.right).key;
+                    h.right = deleteMin(h.right);
+                }
+                else h.right = delete(h.right, key);
+            }
+            return balance(h);
+        }
+
+        private Value get(Node x, Key key) {
+            while(x != null){
+                int cmp = key.compareTo(x.key);
+                if(cmp < 0) x = x.left;
+                else if(cmp > 0) x = x.right;
+                else return x.value;
+            }
+            return null;
+        }
+
+        private Key min(){
+            if(isEmpty()) throw new NoSuchElementException("called min() with empty symbol table");
+            return min(root).key;
+        }
+
+        public Node min(Node x) {
+            if(x.left == null) return x;
+            else return min(x.left);
+        }
+
+
     }
 }

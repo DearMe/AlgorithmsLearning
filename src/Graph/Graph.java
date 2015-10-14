@@ -4,6 +4,7 @@ import collections.Bag;
 
 import java.io.DataInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 
 
 /**
@@ -30,6 +31,16 @@ public class Graph {
         for(int i = 0; i < E; i++){
             int v = in.readInt();
             int w = in.readInt();
+            addEdge(v, w);
+        }
+    }
+
+    public Graph(ArrayList ins){
+        this((int)ins.get(0));
+        int E = (int)ins.get(1);
+        for(int i=2; i<ins.size(); i++){
+            int v = (int)ins.get(i);
+            int w = (int)ins.get(++i);
             addEdge(v, w);
         }
     }
